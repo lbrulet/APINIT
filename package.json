@@ -1,0 +1,26 @@
+{
+  "name": "apinit",
+  "version": "1.0.0",
+  "description": "[API] Setup | NodeJS - Mongoose - LocalPassport",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbrulet/APINIT.git"
+  },
+  "keywords": [
+    "NodeJS"
+  ],
+  "author": "Luc Brulet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lbrulet/APINIT/issues"
+  },
+  "homepage": "https://github.com/lbrulet/APINIT#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
