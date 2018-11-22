@@ -31,13 +31,15 @@ sudo docker-compose up --build
 
 ## API CALLS
 
-[GET/POST/PUT/DELETE] localhost:8080/user
+Mind always to use the __"user"__ object into your request
 
-Mind always to use the "user" object into your request
+* __GET__: localhost:8080/user
 
-GET: localhost:8080/user
-
-PUT: localhost:8080/user
+```json
+nothing to send
+```
+    
+* __PUT__: localhost:8080/user
 
 ```json
 {
@@ -48,7 +50,7 @@ PUT: localhost:8080/user
 }
 ```
 
-POST: localhost:8080/user
+* __POST__: localhost:8080/user
 
 ```json
 {
@@ -58,7 +60,7 @@ POST: localhost:8080/user
 }
 ```
 
-DELETE: localhost:8080/user
+* __DELETE__: localhost:8080/user
 
 ```json
 {
