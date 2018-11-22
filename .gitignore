@@ -7,7 +7,7 @@ yarn-error.log*
 package-lock.json
 
 #data
-./data
+./data/
 
 # Runtime data
 pids

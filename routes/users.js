@@ -5,6 +5,7 @@ const User = require("../models/usersModels")
 const SALT_WORK_FACTOR = 10
 
 router.route('/user')
+    //GET will get all users that are store into the database
     .get(function (req, res) {
         User.find({}, function (err, users) {
             if (err)
@@ -12,6 +13,7 @@ router.route('/user')
             res.status(200).send(users);
         });
     })
+    //POST will update a specific user finded by id
     .post(function (req, res) {
         bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
             if (err)
@@ -27,6 +29,7 @@ router.route('/user')
             })
         })
     })
+    //PUT will create a new user into the database
     .put(function (req, res) {
         var user = new User()
         user.username = req.body.user.username
@@ -37,6 +40,7 @@ router.route('/user')
             res.status(200).send({ message: user._id + " - [" + user.username + "] has been registred!" })
         })
     })
+    //DELETE will delete a specific user finded by id
     .delete(function (req, res) {
         User.deleteOne({ username: req.body.user._id }, function (err, result) {
             if (err)

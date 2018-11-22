@@ -2,11 +2,13 @@ const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 const SALT_WORK_FACTOR = 10
 
+//UserSchema is the model of the users collection
 var UserSchema = new mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
 }, { timestamps: true });
 
+//comparePassword is a function that will compare the user password with his password into the database
 UserSchema.methods.comparePassword = function (candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err)
@@ -15,6 +17,7 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
     });
 };
 
+//pre('save') is a method that will execute before save, it will hash the password before saving
 UserSchema.pre('save', function (next) {
     var user = this;
     if (!user.isModified('password')) 
@@ -31,6 +34,7 @@ UserSchema.pre('save', function (next) {
     });
 });
 
+//This line is to link the model to the collection
 var User = mongoose.model('User', UserSchema);
 
 module.exports = User
