@@ -19,10 +19,10 @@ router.route('/user')
             bcrypt.hash(req.body.user.password, salt, function (err, hashedPassword) {
                 if (err)
                     return res.status(403).send({ message: err });
-                User.updateOne({ username: req.body.user.username }, { $set: { password: hashedPassword } }, function (err, result) {
+                User.updateOne({ username: req.body.user._id }, { $set: { password: hashedPassword } }, function (err, result) {
                     if (err)
                         return res.status(403).send({ message: err });
-                    res.status(200).send({ message: req.body.user.username + " has been modified!" });
+                    res.status(200).send({ message: req.body.user._id + " has been modified!" });
                 })
             })
         })
@@ -38,10 +38,10 @@ router.route('/user')
         })
     })
     .delete(function (req, res) {
-        User.deleteOne({ username: req.body.user.username }, function (err, result) {
+        User.deleteOne({ username: req.body.user._id }, function (err, result) {
             if (err)
                 return res.status(403).send({ message: err })
-            res.status(200).send({ message: req.body.user.username + "has been deleted!" })
+            res.status(200).send({ message: req.body.user._id + "has been deleted!" })
         })
     })
 
