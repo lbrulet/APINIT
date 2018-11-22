@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:7.8
 
 # Create app directory
 WORKDIR /usr/src/app
