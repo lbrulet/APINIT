@@ -22,7 +22,7 @@ router.route('/user')
                 User.updateOne({ username: req.body.user.username }, { $set: { password: hashedPassword } }, function (err, result) {
                     if (err)
                         return res.status(403).send({ message: err });
-                    res.status(403).send({ message: req.body.user.username + " has been modified with success!" });
+                    res.status(200).send({ message: req.body.user.username + " has been modified!" });
                 })
             })
         })
@@ -33,12 +33,16 @@ router.route('/user')
         user.password = req.body.user.password
         user.save(function (err) {
             if (err)
-                return res.send({ message: err })
-            res.send({ message: user._id + " - [" + user.username + "] has just registred!" })
+                return res.status(403).send({ message: err })
+            res.status(200).send({ message: user._id + " - [" + user.username + "] has been registred!" })
         })
     })
     .delete(function (req, res) {
-        res.send('delete a user');
+        User.deleteOne({ username: req.body.user.username }, function (err, result) {
+            if (err)
+                return res.status(403).send({ message: err })
+            res.status(200).send({ message: req.body.user.username + "has been deleted!" })
+        })
     })
 
 module.exports = router
