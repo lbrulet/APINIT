@@ -1,5 +1,4 @@
 # APINIT
-<<<<<<< HEAD
 
 APINIT is a setup of an apiREST using nodeJS with a mongo database and Docker.
 
@@ -52,6 +51,3 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-=======
-[API] Setup | NodeJS - Mongoose - LocalPassport with Docker
->>>>>>> f175087bfcc568e28b5aeb6d65978f03b10bdacd
