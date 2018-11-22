@@ -34,6 +34,11 @@ sudo docker-compose up --build
 [GET/POST/PUT/DELETE] localhost:8080/user
 
 Mind always to use the "user" object into your request
+
+GET: localhost:8080/user
+
+PUT: localhost:8080/user
+
 ```json
 {
 	"user": {
@@ -42,6 +47,27 @@ Mind always to use the "user" object into your request
 	}
 }
 ```
+
+POST: localhost:8080/user
+
+```json
+{
+	"user": {
+		"_id": "5bf6499c3d5ce90012a9722c"
+	}
+}
+```
+
+DELETE: localhost:8080/user
+
+```json
+{
+	"user": {
+		"_id": "5bf6499c3d5ce90012a9722c"
+	}
+}
+```
+
 
 
 ## Contributing
