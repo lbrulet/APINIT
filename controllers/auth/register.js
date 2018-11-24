@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.put('/register', function (req, res) {
     if (!req.body.user.username || !req.body.user.password)
-        return res.status(403).send({ message: "Username or password is undefined!" })
+    return res.status(403).send({ message: "Username or password is undefined!" })
     User.findOne({ username: req.body.user.username }, function (err, user) {
         if (user)
             return res.status(403).send({ message: "Username already exist!" })

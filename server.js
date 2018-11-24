@@ -4,6 +4,7 @@ const mongoose = require('./config/mongo')
 const app = express();
 const user = require("./routes/users")
 const register = require("./controllers/auth/register")
+const login = require("./controllers/auth/login")
 
 //env port by default otherwise 8080
 const PORT = process.env.PORT || 8080
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', user)
 
 app.use('/', register)
+app.use('/', login)
 
 //The main request of the api
 app.get('/', function (req, res) {
