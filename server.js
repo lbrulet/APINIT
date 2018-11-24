@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser")
 const mongoose = require('./config/mongo')
-const User = require("./models/usersModels")
 const app = express();
 const user = require("./routes/users")
+const register = require("./controllers/auth/register")
 
 //env port by default otherwise 8080
 const PORT = process.env.PORT || 8080
@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //GET:POST:DELETE:PUT of user into ./routes/users
-app.use('/', user);
+app.use('/', user)
+
+app.use('/', register)
 
 //The main request of the api
 app.get('/', function (req, res) {
