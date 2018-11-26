@@ -1,8 +1,18 @@
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcrypt")
+const colors = require("colors")
+const dateFormat = require("dateformat")
 const User = require("../models/usersModels")
 const SALT_WORK_FACTOR = 10
+
+// middleware that is specific to this router : 
+// Ex : [2018-11-26, 19:35:17] - [ Sankamille ]: connexion to /api/user
+router.use(function timeLog(req, res, next) {
+    var now = new Date();
+    console.log(colors.bold.green('[%s] - [ %s ] : connexion to %s'), dateFormat(now, "yyyy-mm-dd, HH:MM:ss"), req.user.username, req.originalUrl);
+    next();
+});
 
 router.route('/user')
     //GET will get all users that are store into the database

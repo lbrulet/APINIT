@@ -11,7 +11,6 @@ jwtOptions.secretOrKey = process.env.SECRET;
 exports.jwtOptions = jwtOptions;
 
 exports.strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
-    console.log('payload received', jwt_payload);
     User.findOne({ _id: jwt_payload.id }, function (err, user) {
         if (err)
             next(null, false);
