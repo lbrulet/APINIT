@@ -13,17 +13,24 @@ const login = require("./controllers/auth/login")
 //env port by default otherwise 8080
 const PORT = process.env.PORT || 8080
 
+//Passport will use jsonwebtoken
 passport.use(jwt.strategy)
 
 //bodyParser module is added to parse the body request
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//GET:POST:DELETE:PUT of user into ./routes/users
-app.use('/', user)
+//GET:POST:DELETE:PUT of user model
+app.use('/api', passport.authenticate('jwt', { session: false }), user)
 
-app.use('/', register)
-app.use('/', login)
+//Authentification route
+app.use('/auth', register)
+app.use('/auth', login)
+
+//The secret route that will prove that your token is working
+app.get('/secret', passport.authenticate('jwt', { session: false }), function(req, res) {
+    res.send({ message: "You are authentified, gratz!"})
+})
 
 //The main request of the api
 app.get('/', function (req, res) {

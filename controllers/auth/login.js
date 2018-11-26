@@ -17,6 +17,7 @@ router.post('/login', function (req, res) {
                 return res.status(403).send({ message: "Username or password does not exist!" })
             var payload = { id: user.id };            
             var token = jwt.sign(payload, jwtConf.jwtOptions.secretOrKey);
+            console.log(process.env.SECRET)
             res.status(200).send({ message: "Logged in with success!", token: token, client_id: user._id })
         })
     })
