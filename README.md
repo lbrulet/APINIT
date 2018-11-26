@@ -2,7 +2,7 @@
 
 APINIT is a setup of an apiREST using nodeJS with a mongo database and Docker.
 
-There is a simple model of user implemented with these methods (GET/POST/PUT/DELETE), and an authentification service using LocalPassport and JWT.
+There is a simple model of user implemented with these methods (GET/POST/PUT/DELETE), and an authentification service using JWT.
 
 
 ## Installation
