@@ -24,7 +24,7 @@ To start the container
 ```bash
 sudo docker-compose up
 ```
-or use if you modified something into the nodeJS app
+If the app has been modified
 ```bash
 sudo docker-compose up --build
 ```
