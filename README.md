@@ -33,13 +33,13 @@ sudo docker-compose up --build
 
 Mind always to use the __"user"__ object into your request
 
-* __GET__: localhost:8080/user
+* __GET__: localhost:8080/api/user + [Bearer auth]
 
 ```json
 nothing to send
 ```
     
-* __PUT__: localhost:8080/user
+* __PUT__: localhost:8080/api/user + [Bearer auth]
 
 ```json
 {
@@ -50,7 +50,7 @@ nothing to send
 }
 ```
 
-* __POST__: localhost:8080/user
+* __POST__: localhost:8080/api/user + [Bearer auth]
 
 ```json
 {
@@ -60,7 +60,7 @@ nothing to send
 }
 ```
 
-* __DELETE__: localhost:8080/user
+* __DELETE__: localhost:8080/api/user + [Bearer auth]
 
 ```json
 {
