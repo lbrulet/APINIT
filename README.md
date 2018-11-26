@@ -28,6 +28,31 @@ or use if you modified something into the nodeJS app
 ```bash
 sudo docker-compose up --build
 ```
+## AUTHENTIFICATION
+
+Mind always to use the __"user"__ object into your request
+
+* __POST__: localhost:8080/auth/login
+
+```json
+{
+	"user": {
+		"username": "sankamille",
+		"password": "password123"
+	}
+}
+```
+
+* __PUT__: localhost:8080/auth/register
+
+```json
+{
+	"user": {
+		"username": "sankamille",
+		"password": "password123"
+	}
+}
+```
 
 ## API CALLS
 

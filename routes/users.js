@@ -16,7 +16,7 @@ router.use(function timeLog(req, res, next) {
 
 router.route('/user')
     //GET will get all users that are store into the database
-    .get(function (req, res) {
+    .get(async function (req, res) {
         User.find({}, function (err, users) {
             if (err)
                 return res.status(403).send(err)
@@ -24,7 +24,7 @@ router.route('/user')
         });
     })
     //POST will update a specific user finded by id
-    .post(function (req, res) {
+    .post(async function (req, res) {
         bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
             if (err)
                 return res.status(403).send({ message: err });
@@ -40,7 +40,7 @@ router.route('/user')
         })
     })
     //PUT will create a new user into the database
-    .put(function (req, res) {
+    .put(async function (req, res) {
         var user = new User()
         user.username = req.body.user.username
         user.password = req.body.user.password
@@ -51,7 +51,7 @@ router.route('/user')
         })
     })
     //DELETE will delete a specific user finded by id
-    .delete(function (req, res) {
+    .delete(async function (req, res) {
         User.deleteOne({ username: req.body.user._id }, function (err, result) {
             if (err)
                 return res.status(403).send({ message: err })
