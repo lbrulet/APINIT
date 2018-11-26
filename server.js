@@ -1,13 +1,19 @@
+require('dotenv').config()
+
 const express = require("express");
 const bodyParser = require("body-parser")
+const passport = require("passport")
 const mongoose = require('./config/mongo')
 const app = express();
+const jwt = require("./config/jwt")
 const user = require("./routes/users")
 const register = require("./controllers/auth/register")
 const login = require("./controllers/auth/login")
 
 //env port by default otherwise 8080
 const PORT = process.env.PORT || 8080
+
+passport.use(jwt.strategy)
 
 //bodyParser module is added to parse the body request
 app.use(bodyParser.json());

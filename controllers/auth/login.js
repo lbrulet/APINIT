@@ -1,5 +1,7 @@
 const express = require("express")
 const User = require('../../models/usersModels')
+const jwtConf = require('../../config/jwt')
+const jwt = require('jsonwebtoken')
 const router = express.Router()
 
 router.post('/login', function (req, res) {
@@ -13,7 +15,9 @@ router.post('/login', function (req, res) {
                 return res.status(403).send({ message: err })
             if (!isMatch)
                 return res.status(403).send({ message: "Username or password does not exist!" })
-            res.status(200).send({ message: "Logged in with success!" }, { id: user._id })
+            var payload = { id: user.id };            
+            var token = jwt.sign(payload, jwtConf.jwtOptions.secretOrKey);
+            res.status(200).send({ message: "Logged in with success!", token: token, client_id: user._id })
         })
     })
 })
