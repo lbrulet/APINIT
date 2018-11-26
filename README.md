@@ -28,6 +28,11 @@ If the app has been modified
 ```bash
 sudo docker-compose up --build
 ```
+Does not forget to create a '.env' file with :
+```bash
+SECRET = "your secret"
+```
+
 ## AUTHENTIFICATION
 
 Mind always to use the __"user"__ object into your request
