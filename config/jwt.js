@@ -6,7 +6,8 @@ const JwtStrategy = passportJWT.Strategy;
 
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = process.env.SECRET;
+//Secret into the .env file otherwise "SECRET", change it is recommend
+jwtOptions.secretOrKey = process.env.SECRET || "SECRET";
 
 exports.jwtOptions = jwtOptions;
 
