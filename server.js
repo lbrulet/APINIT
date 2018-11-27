@@ -18,7 +18,6 @@ passport.use(jwt.strategy)
 
 //bodyParser module is added to parse the body request
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 //GET:POST:DELETE:PUT of user model
 app.use('/api', passport.authenticate('jwt', { session: false }), user)
