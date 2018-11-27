@@ -22,10 +22,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 To start the container
 ```bash
-sudo docker-compose up
-```
-If the app has been modified
-```bash
 sudo docker-compose up --build
 ```
 Does not forget to create a '.env' file with :
