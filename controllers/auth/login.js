@@ -6,6 +6,7 @@ const colors = require("colors")
 const dateFormat = require("dateformat")
 const router = express.Router()
 
+//Login function will find the user, compare the password, sign the jsonwebtoken and add it into the reponse
 router.post('/login', function (req, res) {
     if (!req.body.user.username || !req.body.user.password)
         return res.status(403).send({ message: "Username or password is undefined!" })
