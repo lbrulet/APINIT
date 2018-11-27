@@ -14,6 +14,33 @@ router.use(function timeLog(req, res, next) {
     next();
 });
 
+router.route('/metadata')
+    //GET will get the metadata of a specific user
+    .get(async function (req, res) {
+        User.findOne({ username: req.user.username }, function (err, metadata) {
+            if (err)
+                return res.status(403).send({ message: err })
+            if (!metadata)
+                return res.status(200).send({ message: "Metadata does not exist!" })
+            res.status(200).send({ message: metadata.metadata })
+        })
+    })
+    //POST will update metadata of a specific user
+    .post(async function (req, res) {
+        User.updateOne({ _id: req.body.user._id }, { $set: { metadata: req.body.user.metadata } }, function (err, result) {
+            if (err)
+                return res.status(403).send({ message: err })
+            res.status(200).send({ message: req.body.user._id + "'s metadata has been modified!" });
+        })
+    })
+    //DELETE will delete a metadata of a specific user
+    .delete(async function (req, res) {
+        User.deleteOne({_id: req.body.user._id}, function(err) {
+            if (err)
+                res.status(403).send({message: req.body.user._id + "'s metadata has been deleted!"})
+        })
+    })
+
 router.route('/user')
     //GET will get all users that are store into the database
     .get(async function (req, res) {
@@ -31,7 +58,7 @@ router.route('/user')
             bcrypt.hash(req.body.user.password, salt, function (err, hashedPassword) {
                 if (err)
                     return res.status(403).send({ message: err });
-                User.updateOne({ username: req.body.user._id }, { $set: { password: hashedPassword } }, function (err, result) {
+                User.updateOne({ _id: req.body.user._id }, { $set: { password: hashedPassword } }, function (err) {
                     if (err)
                         return res.status(403).send({ message: err });
                     res.status(200).send({ message: req.body.user._id + " has been modified!" });
@@ -52,7 +79,7 @@ router.route('/user')
     })
     //DELETE will delete a specific user finded by id
     .delete(async function (req, res) {
-        User.deleteOne({ username: req.body.user._id }, function (err, result) {
+        User.deleteOne({ _id: req.body.user._id }, function (err) {
             if (err)
                 return res.status(403).send({ message: err })
             res.status(200).send({ message: req.body.user._id + "has been deleted!" })

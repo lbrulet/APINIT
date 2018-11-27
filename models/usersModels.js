@@ -6,6 +6,7 @@ const SALT_WORK_FACTOR = 10
 var UserSchema = new mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
+    metadata: { type: Object, required: false}
 }, { timestamps: true });
 
 //comparePassword is a function that will compare the user password with his password into the database
